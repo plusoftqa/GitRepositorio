@@ -42,6 +42,7 @@ import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Action;
@@ -73,7 +74,7 @@ public class KeyWordExample {
 	static String numerodanotaMobile;
 	static String codigodoContato;
 	
-
+	static String teste;
 	// static KeyWordExecution exeKey = new KeyWordExecution();
 	// static Report.extentReports Report.extent =
 	// Report.extentReports.get(KeyWordExecution.class);
@@ -169,6 +170,12 @@ public class KeyWordExample {
 				capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
 				 driver = new ChromeDriver(capabilities);
 			
+			}else if (browserName.equalsIgnoreCase("edge")) {
+				File file = new File("C:\\Automacao\\browser\\MicrosoftWebDriver.exe");
+
+			    System.setProperty("webdriver.edge.driver", file.getAbsolutePath());
+			    DesiredCapabilities capabilities = DesiredCapabilities.edge();
+			    driver = new EdgeDriver(capabilities);
 			}
 		} catch (WebDriverException e) {
 			Report.fail("open_Browser", browserName.toString(),

@@ -18,6 +18,7 @@ public class KeyWordExecution {
 	
 	public static String descricao;
 	public static WebDriver driver;
+	public static Configuracao inicio = new Configuracao();
 
 	public void runReflectionMethod(String strClassName, String strMethodName,
 
@@ -83,12 +84,16 @@ public class KeyWordExecution {
 		//File diretorio = new File("C:\\Automacao\\Cadastro\\");
 		//C:\Automacao\Cadastro
 		arquivos = diretorio.listFiles();
-
+		
+		
+		
+		
 		for (int i = 0; i < arquivos.length; i++) {
 			
 			System.out.println(arquivos[i].toString());
 			String teste = arquivos[i].toString().substring(29).replace(".xls", "");
 			r.Reports(teste);
+			inicio.config();
 			excelSheet.openSheet(arquivos[i].toString());
 
 			for (int row = 1; row < excelSheet.getRowCount(); row++) {
